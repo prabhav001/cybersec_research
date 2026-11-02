@@ -1,0 +1,21 @@
+DOMAIN: Continuous Threat Exposure Management (CTEM)            LOGGED: 2026-11-02
+VERIFICATION KEY: P = primary read | S = secondary / search summary | V = vendor-authored | conflict = sources disagree
+
+INDUSTRY TELEMETRY EVIDENCE
+1. [E20][S/V] Gartner Market Guide for Adversarial (Automated) Exposure Validation, 24 Mar 2026 (relayed by named vendors): by 2029, 60% of organisations will adopt a structured exposure-validation practice as part of CTEM (reported as jumping from 40% in two years).
+   URL: https://hadrian.io/resources/2026-gartner-r-market-guide-for-adversarial-exposure-validation
+2. [E20][S/V] Gartner 2022 CTEM prediction ("three times less likely to suffer a breach by 2026"; another outlet words it as a two-thirds reduction) - a 2026 vendor article states no empirical breach-rate study validating it has been published. Adoption claims (29% implemented / 46% developing) UNVERIFIED.
+   URL: https://www.vectra.ai/topics/ctem
+3. [E01][P] M-Trends 2026 exposure-relevant findings: misconfigured Active Directory Certificate Services templates -> admin accounts that bypass password rotation; backup objects deleted from cloud storage; long-lived OAuth tokens; hypervisors as Tier-0; edge devices without EDR.
+   URL: https://cloud.google.com/blog/topics/threat-intelligence/m-trends-2026
+4. [E03][S] Microsoft DDR 2025 (secondary): >40% of ransomware attacks have hybrid cloud + on-prem components; reported 87% increase in campaigns against Azure customer environments involving ransomware/mass deletion actions (single-source, verify).
+5. [E05][S] DBIR 2026: exploitation of vulnerabilities leading initial access (~31%); patching improved but still lagged.
+6. [E10][S] VulnCheck: ~29% of KEVs exploited on/before CVE publication - exposure validation must operate before enrichment data exists.
+
+DISTILLED PAIN POINTS
+- The exposures that matter in practice are configuration/identity chains (AD CS, OAuth, IAM trust, backup permissions), not CVE counts; scanner-centric prioritization misses them.
+- Validation (the 4th CTEM stage) is the scarcest capability: safe-in-production emulation and its fidelity are rarely quantified.
+- The headline efficacy claim for CTEM lacks independent empirical validation.
+
+CAVEATS
+- Nearly all CTEM adoption/efficacy statistics are vendor-relayed; none were verified against Gartner directly.

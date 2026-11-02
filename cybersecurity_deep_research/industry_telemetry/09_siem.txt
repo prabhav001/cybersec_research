@@ -1,0 +1,22 @@
+DOMAIN: SIEM            LOGGED: 2026-11-02
+VERIFICATION KEY: P = primary read | S = secondary / search summary | V = vendor-authored | conflict = sources disagree
+
+INDUSTRY TELEMETRY EVIDENCE
+1. [E08][S] CardinalOps, State of SIEM Detection Risk (2025; configuration metadata from Splunk, Microsoft Sentinel, IBM QRadar, CrowdStrike LogScale, Google SecOps instances)
+   - Average detection coverage = 21% of MITRE ATT&CK techniques (+2 points vs 2024).
+   - 13% of existing rules are non-functional (misconfigured data sources, missing log fields) and will never fire.
+   - SIEMs ingest on average 259 log types and ~24,000 unique log sources - enough data to detect >90% of techniques; authors blame manual rule creation and brittle engineering pipelines, not data absence.
+   URLs: https://www.helpnetsecurity.com/2025/06/09/siem-detection-coverage/ ; https://betanews.com/2025/06/05/enterprise-siems-are-detecting-only-21-percent-of-threat-techniques
+2. [E09][S/V] SANS 2025 Detection & Response survey (relayed by Stamus Networks): 73% rank false positives as top detection challenge; >60% see false positives frequently; "very frequent" false positives rose 13% -> 20%. A 42% figure (SOCs sending all data to SIEM with no management strategy) comes from a press summary. A "66% cannot keep pace" figure is attributed to SANS by a vendor glossary only - unconfirmed.
+   URL: https://www.stamus-networks.com/blog/what-the-2025-sans-detection-response-survey-reveals-false-positives-alert-fatigue-are-worsening
+3. [E01][P] M-Trends 2026: 90-day log retention leaves defenders blind to initial access; edge devices without EDR telemetry; reliance on static IOCs insufficient.
+   URL: https://cloud.google.com/blog/topics/threat-intelligence/m-trends-2026
+4. [E02][S] ~82% malware-free detections imply behavioral/log-based rules (not signatures) carry the detection burden.
+
+DISTILLED PAIN POINTS
+- Coverage is a detection-engineering throughput and validation problem, not a log-availability problem (21% coverage vs >90% theoretical).
+- Rules silently die (13%): schema drift, parser changes, missing fields - and nobody notices because dead rules produce no alerts.
+- High false-positive rates coexist with low true coverage: both are symptoms of unvalidated rules.
+
+CAVEATS
+- CardinalOps and SANS are vendor-relayed. CardinalOps' "coverage" is mapping-based (rules tagged to techniques), not execution-validated.

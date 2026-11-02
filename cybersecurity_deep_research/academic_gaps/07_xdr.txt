@@ -1,0 +1,17 @@
+DOMAIN: Extended Detection & Response (XDR)            LOGGED: 2026-11-02
+VERIFICATION KEY: A = abstract/snippet via search only (full paper NOT read) | S = secondary summary | NF = nothing found
+
+ACADEMIC / FRONTIER EVIDENCE
+1. [A01] Bilot et al., "Sometimes Simpler is Better: A Comprehensive Analysis of State-of-the-Art Provenance-Based Intrusion Detection Systems" (USENIX Security 2025). Re-implements eight PIDS in one framework; identifies nine shortcomings hindering adoption; a simple neural network matches state-of-the-art on five of seven DARPA datasets while running faster/real-time; companion ;login: article notes systems fall short at node-level attribution and emit coarse alerts spanning tens of thousands of nodes/events; metric issues include threshold dependency and class-imbalance masking. Framework and pre-processed datasets with ground truth are open-sourced.
+   URL: https://www.usenix.org/conference/usenixsecurity25/presentation/bilot
+2. [A02] Cai et al., NDSS 2025 dataset/evaluation paper: existing PIDS datasets have outdated techniques, short time spans and incomplete attack chains; automated emulation + fine-grained ground truth; reveals weaknesses existing benchmarks cannot expose.
+   URL: https://www.ndss-symposium.org/ndss-paper/auto-draft-665/
+3. [A03] Alachkar et al., "EvilEDR: Repurposing EDR as an Offensive Tool" (USENIX Security 2025): moves beyond evasion/tampering to repurposing EDR itself offensively; proposes defense strategies.
+   URL: https://www.usenix.org/conference/usenixsecurity25/presentation/alachkar
+4. NF: No peer-reviewed 2025 study measuring cross-domain (identity + endpoint + network + edge) correlation quality under OCSF normalization was found. Evidence on Open XDR trade-offs (breadth vs depth, connector maintenance, OCSF/ECS field-mapping) is vendor-authored (Deepwatch, Fidelis, D3).
+5. [E21] AVLab 2026 EDR/XDR tests (independent but per-vendor reports): partial cross-host correlation, command-line visibility gaps.
+
+STRUCTURAL LIMITATIONS / FUTURE-WORK SCOPES
+- Provenance IDS research targets single-host/endpoint audit logs; it does not model missing planes (edge, SaaS) or identity-to-host joins.
+- Alert granularity (tens of thousands of nodes) defeats analyst consumption; attribution at node level is weak.
+- Benchmarks are dated/short; ground truth for modern LOLBin/token-theft chains is scarce.

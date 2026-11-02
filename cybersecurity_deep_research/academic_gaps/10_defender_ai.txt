@@ -1,0 +1,19 @@
+DOMAIN: Defender AI            LOGGED: 2026-11-02
+SCOPE NOTE: AI systems deployed defensively (SOC copilots/agents), analysed as an attack surface.
+VERIFICATION KEY: A = abstract/snippet via search only (full paper NOT read) | S = secondary summary
+
+ACADEMIC / FRONTIER EVIDENCE
+1. [A11] Pandey & Bhujang, "Poisoning the Watchtower: Prompt Injection Attacks Against ..." (arXiv 2605.24421, May 2026; the search listing truncated the title - the subject is LLM-based analysis of logs/telemetry). Hides instructions in log fields (user agent, URL, DNS query) read by an LLM analyst; four attack classes; 48 strategy x defense x task combinations tested with gpt-4o-mini; direct overrides failed in their setup but persona hijacks still suppressed many malicious logs even against stronger defenses; summarization was the riskiest task; strongest defense lowered average injection success from ~26.6% to ~11.8% (residual risk). Conclusion: treat raw log content as untrusted input. (Single, small model; preprint.)
+   URL: https://www.alphaxiv.org/abs/2605.24421
+2. [A12] "Context Contamination in LLM Analysis of Network Logs" (arXiv 2607.14493, snippet only) positions itself among related SOC-log injection studies.
+   URL: https://www.alphaxiv.org/abs/2607.14493.md
+3. [A10] "The Attacker Moves Second" (arXiv 2510.09023): 12 published prompt-injection/jailbreak defenses broken by adaptive attacks, most >90% success; static evaluation is flawed.
+   URL: https://arxiv.org/abs/2510.09023
+4. [E16] EchoLeak case study (arXiv; Reddy & Gujral): zero-click prompt injection in a production LLM system (CVE-2025-32711) chaining bypasses of the XPIA classifier and a CSP-allowed Teams proxy; proposes prompt partitioning and provenance-based access control as mitigations.
+   URL: https://aitopics.org/doc/arxivorg:A103E60D (aggregator listing of the arXiv paper)
+5. [A13][A14] Defender-agent capability benchmarks (CyberSOCEval, ExCyTIn-Bench, Simbian) evaluate task performance, not adversarial robustness - see academic_gaps/02 and /06.
+
+STRUCTURAL LIMITATIONS / FUTURE-WORK SCOPES
+- Defenses reduce but do not eliminate injection success; guarantees (information-flow or capability-based) are not demonstrated for SOC tool chains.
+- Evaluations use a single small model and static attacks; adaptive-attack evaluation is rare.
+- Utility-security trade-off on realistic investigation tasks is unmeasured; high-impact tool access (containment, rule edits) raises stakes beyond summarization.

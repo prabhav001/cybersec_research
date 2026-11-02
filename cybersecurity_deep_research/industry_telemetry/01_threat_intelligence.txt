@@ -1,0 +1,31 @@
+DOMAIN: Threat Intelligence            LOGGED: 2026-11-02
+VERIFICATION KEY: P = primary page read in full this session | S = secondary coverage / search summary (primary NOT opened) | conflict = sources disagree
+
+INDUSTRY TELEMETRY EVIDENCE
+1. [E01][P] Mandiant M-Trends 2026 (Google Cloud), 2025 investigations
+   - Median time from initial access to hand-off to a secondary group: "more than 8 hours" (2022) -> "just 22 seconds" (2025).
+   - Prior compromise = 30% of ransomware initial infection vectors (15% in 2024).
+   - "relying solely on static indicators of compromise (IOCs) is no longer sufficient."
+   - PROMPTFLUX / PROMPTSTEAL "actively query large language models (LLMs) mid-execution to evade detection."
+   - Caveat from Mandiant: "we do not consider 2025 to be the year where breaches were the direct result of AI."
+   URL: https://cloud.google.com/blog/topics/threat-intelligence/m-trends-2026
+
+2. [E14][S] Google Threat Intelligence Group AI-misuse report (5 Nov 2025)
+   - PROMPTFLUX: VBScript dropper that asks the Gemini API to rewrite its own code (self-modifying obfuscation).
+   - PROMPTSTEAL: Python data miner generating one-line Windows commands via an LLM; attributed to APT28 activity against Ukraine (per GTIG via press).
+   - PROMPTLOCK (experimental ransomware) and FruitShell (PowerShell reverse shell with hard-coded prompts meant to evade LLM-based security analysis).
+   URL: https://www.bleepingcomputer.com/news/security/google-warns-of-new-ai-powered-malware-families-deployed-in-the-wild/
+
+3. [E02][S] CrowdStrike 2026 Global Threat Report (24 Feb 2026)
+   - Average eCrime breakout time ~29 minutes; fastest observed 27 seconds.
+   - AI-enabled adversary operations +89% year over year; 280+ named adversaries tracked.
+   - ~82% of detections malware-free (figure only seen in secondary summaries; presentation conflicted across outlets).
+   URL: https://www.businesswire.com/news/home/20260224017260/en/ ; https://www.infotrust.com.au/resource-library/key-findings-crowdstrike-2026-global-threat-report
+
+DISTILLED PAIN POINTS
+- Intelligence is consumed on human timescales (feed ingestion, ticket triage) while adversary hand-offs and breakouts occur in seconds-to-minutes.
+- Indicator-centric CTI covers a shrinking slice of activity (malware-free, valid-account, LOLBin-heavy intrusions) and decays at actor-specific rates not captured by vendor TTLs.
+- Adversaries are embedding LLM calls inside malware, making static signatures and fixed indicators less durable.
+
+CAVEATS
+- CrowdStrike numbers are from secondary summaries; www.crowdstrike.com was unreachable from this session (network allowlist). Re-verify against the primary report before citing.

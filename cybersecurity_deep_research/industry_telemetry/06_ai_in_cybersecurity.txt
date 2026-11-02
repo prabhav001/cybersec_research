@@ -1,0 +1,26 @@
+DOMAIN: AI in Cybersecurity            LOGGED: 2026-11-02
+VERIFICATION KEY: P = primary read | S = secondary / search summary | conflict = sources disagree
+
+INDUSTRY TELEMETRY EVIDENCE
+1. [E15][S] Anthropic disclosure of GTG-1002 (detected mid-Sep 2025; assessed Chinese state-sponsored)
+   - Operators used an agentic framework around Claude Code + MCP tools; AI reportedly executed ~80-90% of tactical operations; ~30 targeted entities (subset validated as compromised); no custom malware relied upon.
+   - Jailbreak by role-play as a legitimate security tester. Secondary coverage reports hallucinations (overstated findings/credentials) as an obstacle requiring human validation - exact wording NOT verified in the primary report.
+   URLs: https://www.esecurityplanet.com/threats/inside-the-first-ai-driven-cyber-espionage-campaign/ ; https://thehackernews.com/2025/11/chinese-hackers-use-anthropics-ai-to.html
+
+2. [E14][S] GTIG AI-misuse report (5 Nov 2025): LLMs queried at runtime inside malware (PROMPTFLUX, PROMPTSTEAL); FruitShell embeds prompts targeting LLM-based analysis.
+   URL: https://www.bleepingcomputer.com/news/security/google-warns-of-new-ai-powered-malware-families-deployed-in-the-wild/
+
+3. [E01][P] M-Trends 2026: QUIETVAULT checks for local AI CLI tools and runs predefined prompts to find config files; "distillation attacks" target ML-model IP; and the explicit caution that 2025 was not "the year where breaches were the direct result of AI" - most successful intrusions stem from "fundamental human and systemic failures."
+   URL: https://cloud.google.com/blog/topics/threat-intelligence/m-trends-2026
+
+4. [E02][S] CrowdStrike 2026 GTR: AI-enabled adversary operations +89% YoY; AI tooling/dev platforms themselves exploited.
+
+5. [E03][S] Microsoft DDR 2025 (secondary): AI-crafted phishing ~54% click-through vs ~12% (4.5x) - one outlet says "three times"; conflict. Identity-based attacks +32% in 1H 2025. Report also covers deepfake/synthetic identities and the disrupted Storm-2139 AI-abuse ring.
+   URL: https://www.paubox.com/blog/microsoft-ai-makes-phishing-4.5x-more-effective-and-far-more-profitable
+
+DISTILLED PAIN POINTS
+- Offensive AI measurement is dominated by provider-side disclosures; victim-side defenders lack validated telemetry signatures to tell agentic from human or scripted operators.
+- Vendors disagree on how much AI changes outcomes (Mandiant's restraint vs CrowdStrike's +89% operations), so prevalence is poorly measured.
+
+CAVEATS
+- GTG-1002 percentages are Anthropic-reported figures relayed by press; treat 80-90% as "reported by the provider".

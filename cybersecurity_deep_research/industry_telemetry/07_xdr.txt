@@ -1,0 +1,26 @@
+DOMAIN: Extended Detection & Response (XDR)            LOGGED: 2026-11-02
+VERIFICATION KEY: P = primary read | S = secondary / search summary | V = vendor-authored / commissioned | conflict = sources disagree
+
+INDUSTRY TELEMETRY EVIDENCE
+1. [E01][P] Mandiant M-Trends 2026
+   - Most targeted/abused: edge and core network devices (VPNs, routers) "typically lack standard endpoint detection and response (EDR) telemetry"; virtualization platforms; identity and backup systems; SaaS (OAuth tokens, session cookies); IT help desks via voice phishing.
+   - "interactive social engineering frequently bypasses traditional MFA."
+   - Attackers harvest "long-lived OAuth tokens and session cookies"; compromise SaaS vendors to steal hard-coded keys/PATs and pivot into downstream customers.
+   URL: https://cloud.google.com/blog/topics/threat-intelligence/m-trends-2026
+
+2. [E04][S - LOW CONFIDENCE] Red Canary 2026 Threat Detection Report executive summary: identity is the headline theme; a figure of 53% of detection volume tied to identities appeared in a garbled PDF snippet - verify before citing. The 2025 edition reported three of the top five techniques were cloud-native and identity-enabled, with Cloud Accounts #1.
+   URLs: https://www.zscaler.com/resources/industry-reports/red-canary-2026-threat-detection-report-executive-summary.pdf ; https://redcanary.com/threat-detection-report/techniques/ (host not reachable here)
+
+3. [E03][S] Microsoft DDR 2025: identity-based attacks +32% in 1H 2025; >97% are password-based; phishing-resistant MFA cited as preventing up to 99% of these. Token-theft / AiTM techniques reported at <3% of attacks (early-2025 data, single secondary source).
+
+4. [E02][S] CrowdStrike 2026 GTR: ~82% of detections malware-free (secondary) - i.e., detections rely on behavior and identity rather than file artifacts.
+
+5. [E21][S/V] AVLab EDR/XDR assessments (June 2026, per-vendor PDFs): cross-host correlation present but sometimes incomplete requiring analyst verification; recurring gaps in command-line visibility/raw telemetry; some "XDR" products still primarily endpoint-driven.
+   URL: https://avlab.pl/en/wp-content/uploads/2026/06/AVLab-EDR_XDR-CrowdStrike-2026-06-10.pdf
+
+DISTILLED PAIN POINTS
+- The XDR value proposition (cross-domain correlation) depends on telemetry from planes where attackers actually operate (identity/token, edge, SaaS, hypervisor) - exactly the planes with weakest or absent sensors.
+- Session/token theft breaks the identity<->endpoint link: the IdP sees a valid login, the endpoint sees nothing.
+
+CAVEATS
+- No independent quantification of cross-domain correlation quality was found. Vendor "XDR ceiling" papers are advocacy.

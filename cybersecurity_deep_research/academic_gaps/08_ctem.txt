@@ -1,0 +1,17 @@
+DOMAIN: Continuous Threat Exposure Management (CTEM)            LOGGED: 2026-11-02
+VERIFICATION KEY: A = abstract/snippet via search only (full paper NOT read) | S = secondary summary | NF = nothing found
+
+ACADEMIC / FRONTIER EVIDENCE
+1. [A19] "Scalable Privilege Analysis for Multi-Cloud Big Data Platforms: A Hypergraph Approach" (arXiv 2511.15837, Nov 2025). Argues traditional graph models cannot efficiently represent multi-party IAM relationships; builds on NIST NGAC; claims sublinear O(sqrt n) traversal and O(n log n) detection - SELF-REPORTED complexity analysis, no independent benchmarks.
+   URL: https://arxiv.org/html/2511.15837
+2. [A20] arXiv 2312.16513 (attack-graph scalability): attack graphs can grow exponentially in hosts and vulnerabilities; scalable attack-path analysis remains an open problem; proposes analysis-driven (on-demand) generation. Targets network attack graphs, not cloud identity graphs.
+   URL: https://web3.arxiv.org/pdf/2312.16513v1
+3. [A21] BAS / validation fidelity: arXiv 2406.07559 (realism and representativeness of simulated attacks is an open question); StealthCup (arXiv 2511.17761) lists own limits - single scenario, few IDS tools, no simulated user activity; a university project evaluating MITRE Caldera found gaps in initial-access simulation and update cadence.
+   URLs: https://arxiv.org/pdf/2406.07559 ; https://arxiv.org/pdf/2511.17761
+4. [A09] Reachability studies (arXiv 2511.20313) show large false-positive reductions from call-reachability in Go; infrastructure-level mitigations (network isolation) not captured by call graphs (practitioner commentary).
+5. NF: No peer-reviewed study measuring CTEM program efficacy (breach reduction) or BAS predictive validity was found.
+
+STRUCTURAL LIMITATIONS / FUTURE-WORK SCOPES
+- Scalability of multi-cloud identity + network + vulnerability graphs is claimed by tools but not independently benchmarked under churn (ephemeral pods/functions).
+- "Validated exposure" lacks a formal, calibrated definition; production-safety constraints on validation are unaddressed in surfaced literature.
+- Predictive validity (do high-ranked paths match real incident chains?) is untested.

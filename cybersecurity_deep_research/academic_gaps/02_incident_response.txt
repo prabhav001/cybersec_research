@@ -1,0 +1,24 @@
+DOMAIN: Incident Response            LOGGED: 2026-11-02
+VERIFICATION KEY: A = abstract/snippet seen via search results only (full paper NOT read) | S = secondary summary page
+
+ACADEMIC / FRONTIER EVIDENCE
+1. [A22] RL-based autonomous cyber defense generalisation
+   - "Beyond CAGE: Investigating Generalization of Learned Autonomous Network Defense Policies" (arXiv 2211.15557, NeurIPS 2022 RL4RealLife workshop): policies lost performance when attacker strategy changed, even to a less efficient strategy.
+   - KTH graph-based attack-simulation work (arXiv 2407.05775, "Structural Generalization in Autonomous Cyber Incident Response with MPNNs and RL"): performance degrades as attack-graph size grows and in unseen environments; real-system transfer untested.
+   - IEEE CAI 2025 Adaptive CyberDefense workshop paper (arXiv 2505.04843, LLM agents for CybORG CAGE 4): RL defenders need costly training and are poorly explainable/transferable.
+   URLs: https://ar5iv.labs.arxiv.org/html/2211.15557 ; https://arxiv.org/html/2407.05775v1 ; https://arxiv.org/html/2505.04843v1
+2. [A21] "After the Breach: Incident Response within Enterprises" (arXiv 2406.07559): how realistic simulated attacks are, or representative of real ones, is an open question; only one reviewed system (Latte) used a real-world lateral-movement instance for evaluation.
+   URL: https://arxiv.org/pdf/2406.07559
+3. [A13][A14] LLM-in-SOC benchmarks
+   - CyberSOCEval (Meta, arXiv 2509.20166): malware analysis and threat-intel reasoning; models far from saturating.
+   - ExCyTIn-Bench (Microsoft): agents query a MySQL DB mirroring an Azure tenant; per SentinelOne's review, mean reward 0.249, best 0.368 (secondary figures).
+   - Simbian Cyber Defense Benchmark: five frontier agents over 98 runs; an "attribution gap" where agents see malicious evidence but fail to submit it; 10-row query limit vs large logs (secondary summary).
+   - SentinelLabs critique: benchmarks test narrow tasks, ignore operational outcomes (time-to-detect, containment), and test-time scaling helps less than in coding/math.
+   URLs: https://arxiv.org/html/2509.20166v2 ; https://www.sentinelone.com/labs/llms-in-the-soc-part-1-why-benchmarks-fail-security-operations-teams
+4. [A15] DFIR-Metric (arXiv 2505.19973): 700 MCQs + 150 CTF-style tasks + 500 NIST CFTT disk/memory cases; 14 LLMs; consistency across trials measured; severe limits in forensic code generation.
+   URL: https://www.themoonlight.io/review/dfir-metric-a-benchmark-dataset-for-evaluating-large-language-models-in-digital-forensics-and-incident-response (summary page; paper not opened)
+
+STRUCTURAL LIMITATIONS / FUTURE-WORK SCOPES
+- Benchmarks score investigation correctness, not containment decisions under time pressure and asymmetric cost.
+- Simulator-trained policies do not transfer across attacker strategy or topology shifts.
+- Real handoff / breakout timelines are not available in a labeled public benchmark.

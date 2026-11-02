@@ -1,0 +1,19 @@
+DOMAIN: Defender AI (AI-driven defensive systems: SOC copilots/agents, Defender/Security-Copilot-class tooling)            LOGGED: 2026-11-02
+SCOPE NOTE: "Defender AI" is interpreted here as AI systems deployed on the defensive side, treated both as capability and as attack surface.
+VERIFICATION KEY: P = primary read | S = secondary / search summary | V = vendor-authored | conflict = sources disagree
+
+INDUSTRY TELEMETRY EVIDENCE
+1. [E16][S] EchoLeak, CVE-2025-32711 (Microsoft 365 Copilot): zero-click prompt injection via a single crafted email enabling data exfiltration; chained bypass of Microsoft's XPIA classifier, link/markdown redaction and a CSP-allowed Teams proxy; Aim Security framed it as an "LLM scope violation"; CVSS 9.3 per The Hacker News; reported as server-side fixed (~May 2025) with no evidence of in-the-wild exploitation.
+   URL: https://thehackernews.com/2025/06/zero-click-ai-vulnerability-exposes.html
+2. [S/V] Practitioner evidence of log-borne prompt injection against SOC LLMs: DEF CON 34 poster "Poisoning the SOC" (which attacker-controlled fields survive SIEM ingestion and steer agents); LevelBlue SpiderLabs blog (log-based injection can make agents alter/hide/invent events); a 2025 Sygnia test relayed by NeuralTrust in which an injected PowerShell block made an MDR summary describe Mimikatz as maintenance (vendor-relayed, unverified).
+   URLs: https://aivillage.org/posters/poisoning-the-soc-prompt-injection-via-ingested-telemetry/ ; https://www.levelblue.com/blogs/spiderlabs-blog/rogue-ai-agents-in-your-socs-and-siems-indirect-prompt-injection-via-log-files
+3. [E14][S] GTIG: FruitShell PowerShell reverse shell carries hard-coded prompts "meant to evade LLM-based security analysis" - adversaries already target the defender's LLM.
+4. [E01][P] M-Trends 2026: QUIETVAULT probes for local AI CLI tools; distillation attacks target proprietary ML models.
+5. [E03][S] Microsoft DDR 2025 (secondary): recommends AI for large-scale log analysis and anomaly detection; discusses non-human identities (service accounts, AI agents) as an emerging identity class.
+
+DISTILLED PAIN POINTS
+- Defender LLMs ingest attacker-controlled text (user-agents, URLs, DNS names, command lines, email bodies) as part of normal operation; the trust boundary between instructions and data does not exist in the model.
+- Defenders are deploying agents with action capabilities (ticketing, containment, rule edits) while adversaries have begun embedding payloads aimed at those agents.
+
+CAVEATS
+- Vendor blog/poster evidence is not peer-reviewed; see academic_gaps/10_defender_ai.txt for the peer-reviewed counterpart.

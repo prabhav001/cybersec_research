@@ -1,0 +1,32 @@
+DOMAIN: Digital Forensics            LOGGED: 2026-11-02
+VERIFICATION KEY: P = primary read | S = secondary / search summary | V = vendor-authored (treat as advocacy) | conflict = sources disagree
+
+INDUSTRY TELEMETRY EVIDENCE
+1. [E01][P] Mandiant M-Trends 2026
+   - Edge devices have "minimal onboard storage and cannot support traditional security tooling"; forensics "presents a significant challenge, often leaving security teams with limited artifacts."
+   - BRICKSTORM backdoor "routinely survives standard remediation efforts and system reboots"; dwell time "nearly 400 days".
+   - Hypervisors described as "Tier-0": attackers target the virtualization storage layer / encrypt datastores, rendering all VMs inoperable at once.
+   - 90-day log retention leaves defenders blind to initial access.
+   URL: https://cloud.google.com/blog/topics/threat-intelligence/m-trends-2026
+
+2. [E17][S] Government guidance on device forensics
+   - ASD/ACSC (first published 5 Feb 2025): guidance for producers of network devices on digital forensics and protective monitoring; notes devices with limited logging are targeted because intrusions are hard to detect.
+   - UK NCSC, "Making forensic observability the norm for network devices": many network devices still provide only limited support for incident investigation.
+   URLs: https://www.cyber.gov.au/business-government/protecting-devices-systems/hardening-systems-applications/network-hardening/securing-edge-devices/guidance-on-digital-forensics-protective-monitoring-specifications-producers-network-devices-appliances ; https://www.ncsc.gov.uk/sites/default/files/2026-08/Making-forensic-observability-the-norm-for-network-devices.pdf
+
+3. [E18][S/V] ESXi hypervisor forensics (vendor DFIR blogs; not independently verified)
+   - ESXi logging is decentralised; ransomware playbooks reportedly enable SSH, disable/redirect syslog and turn off logging before encryption (Sygnia/SRA-style reports relayed by SOC Prime, Rewterz).
+   - Blackpanda case study (Qilin affiliate): limited monitoring/logging at the hypervisor layer among gaps exploited.
+   - One aggregator attributes to Huntress data a rise of hypervisor-focused ransomware from 3% to 25% of observed incidents in 2025 - UNVERIFIED.
+   URLs: https://www.blackpanda.com/case-studies/qilin-ransomware-esxi-incident-response ; https://sra.io/blog/single-point-of-failure-threat-hunting-and-defending-esxi-attacks/ ; https://socprime.com/active-threats/esxi-hypervisors-against-ransomware/
+
+4. [E19][V] Cloud forensics (Wiz course material; Darktrace product blog)
+   - Short-lived resources terminate before evidence is preserved; provider logs can be incomplete or disabled by default; jurisdiction/region complexity.
+   URL: https://www.wiz.io/courses/secops-for-cloud/forensics-and-root-cause-analysis/current-state-and-challenges-with-forensics
+
+DISTILLED PAIN POINTS
+- The planes attackers now prefer (edge appliances, hypervisor management, SaaS/OAuth) are the planes with the weakest artifact generation, retention and integrity guarantees.
+- Persistence that survives reboot/patch/firmware update on appliances means "reimage and move on" destroys the only evidence.
+
+CAVEATS
+- Hypervisor-ransomware prevalence numbers are vendor/aggregator claims; do not cite without primary verification.

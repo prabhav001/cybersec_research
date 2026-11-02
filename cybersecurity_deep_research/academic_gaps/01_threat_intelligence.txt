@@ -1,0 +1,19 @@
+DOMAIN: Threat Intelligence            LOGGED: 2026-11-02
+VERIFICATION KEY: A = abstract/snippet seen via search results only (full paper NOT read) | S = secondary summary page | venue claims are as reported by search listings and need verification
+
+ACADEMIC / FRONTIER EVIDENCE
+1. [A16] "Investigating the Temporal Dynamics of Cyber Threat Intelligence" (arXiv 2412.19086). Reports (citing recent studies) average overlap of no more than 4.5% between providers offering similar intelligence types; examines how quickly IoCs for recent CVEs appear in feeds.
+   URL: https://arxiv.org/html/2412.19086v1
+2. [A17] SANS.edu research paper "Adversary-Aware IOC Retention: Analyzing Time-to-Live Patterns by Threat Actor Attribution". Claim: current decay models are uniform and ignore actor TTPs; analysed hundreds of IOCs across three APTs and found different rotation rates. (Small sample; not a peer-reviewed venue.)
+   URL: https://www.sans.edu/cyber-research/adversary-aware-ioc-retention-analyzing-time-live-patterns-threat-actor-attribution/
+3. Netresec blog citing a 2022 IoT-botnet study: 90% of C2 servers lived <5 days, 93% <14 days (secondary; older).
+   URL: https://netresec.com/?b=25Be9dd
+4. OUSPG feed analysis (16 free feeds; overlap, novelty, aging tests) - authors caution that interpreting results is non-trivial.
+   URL: https://medium.com/ouspg/analyzing-ti-feeds-for-overlap-novelty-and-aging2-494edc31865c
+5. [A18] LLM-based CTI/TTP extraction: IntelEX (arXiv 2412.10872, vector DB of ATT&CK + LLM-as-judge to reduce false positives); arXiv 2505.11547 (GPT-4 attribution: LLM-generated TTPs differ significantly from human-annotated MITRE group data); TTPrint (arXiv 2605.25836, May 2026; recall/precision trade-off for ATT&CK extraction); a secondary summary of "Uncovering Vulnerabilities of LLM-Assisted CTI" lists limited IOC normalization under obfuscation, inconsistent TTP extraction, weak temporal coherence (summary only).
+   URLs: https://arxiv.org/html/2412.10872v1 ; https://arxiv.org/html/2505.11547v1 ; https://arxiv.org/html/2605.25836v1
+
+STRUCTURAL LIMITATIONS / FUTURE-WORK SCOPES
+- No peer-reviewed, standardized IOC half-life / survival estimate conditioned on actor behavior was found.
+- Feed evaluation uses overlap/novelty/aging proxies rather than ground-truth "would-have-detected" outcomes.
+- No widely adopted hallucination/faithfulness benchmark for LLM ATT&CK mapping was found; LLM-vs-analyst disagreement is treated as error without resolving which is right.

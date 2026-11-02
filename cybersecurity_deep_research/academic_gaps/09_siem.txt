@@ -1,0 +1,20 @@
+DOMAIN: SIEM            LOGGED: 2026-11-02
+VERIFICATION KEY: A = abstract/snippet via search only (full paper NOT read) | S = secondary summary | NF = nothing found
+
+ACADEMIC / FRONTIER EVIDENCE
+1. [A23] Le & Zhang, "Log-based Anomaly Detection with Deep Learning: How Far Are We?" (ICSE 2022; arXiv 2202.04301 - foundational, older than the 2025/26 window). Re-evaluates DeepLog, LogAnomaly, PLELog, LogRobust, CNN on HDFS/BGL/Spirit/Thunderbird: random train/test splits cause data leakage and inflated accuracy (F-measure >0.9 on HDFS); precision/recall/F are inadequate for imbalanced data; small noise (mislabels, parsing errors) degrades performance; models generalize poorly. An industrial follow-up (Wijesinghe & Hemmati) reports effectiveness changes when the leak is removed.
+   URL: https://arxiv.org/pdf/2202.04301
+2. [A24] LLM detection-rule generation
+   - LLMCloudHunter (arXiv 2407.05194, 2024): 12 annotated cloud threat reports; 99.18% of generated rule candidates compiled to Splunk queries - a syntactic metric.
+   - EvoSIEM (RVIF 2025): tests Sigma rules against evasive attack commands and fine-tunes LLMs; reports 85% syntactically valid Sigma rules and 82% functional evasive commands (university announcement).
+   - RulePilot (arXiv 2511.12224; listing says CCS 2026): LLM agent generating SIEM rules executed in Splunk; outperforms baselines on text similarity and execution success.
+   - RuleGenie (arXiv 2505.06701): redundancy/optimization across Sigma, Splunk, AQL rule sets.
+   URLs: https://arxiv.org/pdf/2407.05194 ; https://arxiv.org/html/2511.12224v1 ; https://arxiv.org/pdf/2505.06701
+3. [A11] "Poisoning the Watchtower" (arXiv 2605.24421) and "Context Contamination in LLM Analysis of Network Logs" (arXiv 2607.14493, snippet only): attacker-written log fields (user agents, URLs, DNS) can steer LLM log analysts - relevant to SIEM-integrated assistants.
+   URL: https://www.alphaxiv.org/abs/2605.24421
+4. NF: No peer-reviewed measurement of rule liveness (rules that can never fire due to missing fields/sources) or execution-validated ATT&CK coverage was found; the best data are vendor aggregates (CardinalOps).
+
+STRUCTURAL LIMITATIONS / FUTURE-WORK SCOPES
+- Many LLM-rule papers evaluate syntax, compile success or text similarity rather than detection outcomes against benign + malicious replay.
+- No benign-background false-positive evaluation standard for generated rules.
+- Learned log anomaly detectors suffer leakage-prone evaluation; applicability to security (vs. reliability) logs is unproven.

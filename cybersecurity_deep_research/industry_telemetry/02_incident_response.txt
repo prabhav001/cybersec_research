@@ -1,0 +1,31 @@
+DOMAIN: Incident Response            LOGGED: 2026-11-02
+VERIFICATION KEY: P = primary read | S = secondary / search summary | conflict = sources disagree
+
+INDUSTRY TELEMETRY EVIDENCE
+1. [E01][P] Mandiant M-Trends 2026
+   - Global median dwell time rose to 14 days (from 11); cyber-espionage and DPRK IT-worker cases: 122 days.
+   - Internal first detection 52% of intrusions (43% in 2024).
+   - Hand-off to secondary group: >8 h (2022) -> 22 s (2025). Mandiant advice: "Treat routine malware alerts as high-priority indicators of an impending secondary intrusion, and remediate before interactive hands-on-keyboard operations begin."
+   - "standard 90-day log retention policies leave organizations completely blind to the initial access vector and the full scope of the intrusion."
+   - Ransomware groups (REDBIKE/Akira, AGENDA/Qilin) "actively targeted backup infrastructure, identity services, and virtualization management planes."
+   - Exploits 32% of intrusions (6th consecutive year); voice phishing 11% (2nd); email phishing 6%.
+   URL: https://cloud.google.com/blog/topics/threat-intelligence/m-trends-2026
+
+2. [E06][S] Sophos Active Adversary Report 2025 (400+ IR/MDR cases from 2024)
+   - Median dwell time 2 days overall (IR: 4 days ransomware / 11.5 non-ransomware; MDR: 3 / 1). Drop attributed largely to MDR cases added to the dataset.
+   - 56% of cases: adversaries "logged in" rather than broke in.
+   - Median 11 hours from initial access to first attempt to breach Active Directory; ~73 hours from attack start to exfiltration in ransomware/exfil/extortion cases.
+   URL: https://www.sophos.com/en-us/blog/2025-sophos-active-adversary-report
+
+3. [E02][S] CrowdStrike 2026 GTR: average breakout ~29 min, fastest 27 s.
+
+4. [E07][S] Coveware Q3 2025: only 23% of ransomware victims paid (record low); median payment ~$140k; ~76% of attacks involved data exfiltration; exfil-only payment rate 19%.
+   URL: https://www.securityweek.com/ransomware-payments-dropped-in-q3-2025-analysis/
+
+DISTILLED PAIN POINTS
+- The decision window for containment (seconds-minutes) is far shorter than the investigation cycle (hours-days) that most IR playbooks assume.
+- Dwell-time statistics are population-dependent (Mandiant IR vs Sophos MDR) and cannot be compared naively; this complicates SLA design and metric selection.
+- Backup, identity and hypervisor planes are targeted first, undermining recovery assumptions.
+
+CAVEATS
+- Sophos and Coveware figures are relayed via secondary coverage. Mandiant figures are from the primary page.

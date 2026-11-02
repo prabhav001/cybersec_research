@@ -1,0 +1,16 @@
+DOMAIN: Digital Forensics            LOGGED: 2026-11-02
+VERIFICATION KEY: A = abstract/snippet via search only (full paper NOT read) | S = secondary summary | NF = nothing found
+
+ACADEMIC / FRONTIER EVIDENCE
+1. [A15] DFIR-Metric (arXiv 2505.19973, May 2025): 14 LLMs evaluated on 700 expert-reviewed MCQs, 150 CTF-style challenges and 500 NIST CFTT disk/memory cases; introduces a Task Understanding Score for near-zero-accuracy cases; flags hallucination risk in high-stakes DFIR; hands-on module exposes weak forensic code generation.
+   URL: https://www.alphaxiv.org/benchmarks/university-of-oslo/dfir-metric (listing); https://web3.arxiv.org/abs/2505.19973
+2. NF: A targeted search for peer-reviewed 2025 work on (a) cloud/container/serverless forensic evidence collection, (b) hypervisor (ESXi) forensics and (c) embedded network-appliance forensics returned only vendor and government material (Wiz, Darktrace, ASD, NCSC; see industry_telemetry/03). No peer-reviewed counterpart was surfaced in this session.
+3. NF: No result addressed legal admissibility / evidentiary standards (e.g., Daubert, chain of custody) for LLM-generated forensic findings.
+4. [S] A forensics newsletter and NCSC/ASD guidance recommend control-plane forensics, diffing running config against known-good baselines, structured logging, authenticated collection and defined forensic interfaces - practitioner guidance, not validated methods.
+   URL: https://www.ncsc.gov.uk/sites/default/files/2026-08/Making-forensic-observability-the-norm-for-network-devices.pdf
+
+STRUCTURAL LIMITATIONS / FUTURE-WORK SCOPES
+- Evidence sufficiency is not formalized: what minimal artifacts allow timeline reconstruction with bounded error is unstated.
+- No public ground-truth datasets of hypervisor- or appliance-level compromise with known attacker action timelines.
+- LLM forensic assistance is benchmarked on knowledge and string-search tasks, not on tamper-aware timeline synthesis.
+- (Absence-of-evidence caveat: network restrictions blocked arXiv/ACM/IEEE fetches; searches may have missed relevant papers - e.g., DFRWS proceedings.)

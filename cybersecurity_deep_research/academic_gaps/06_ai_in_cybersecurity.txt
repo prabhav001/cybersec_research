@@ -1,0 +1,17 @@
+DOMAIN: AI in Cybersecurity            LOGGED: 2026-11-02
+VERIFICATION KEY: A = abstract/snippet via search only (full paper NOT read) | S = secondary summary
+
+ACADEMIC / FRONTIER EVIDENCE
+1. [A10] "The Attacker Moves Second: Stronger Adaptive Attacks Bypass Defenses Against LLM Jailbreaks and Prompt Injections" (arXiv 2510.09023, Oct 2025). Defenses are typically evaluated against static attack sets; authors apply gradient descent, RL, random search and human-guided exploration and break 12 recent defenses, most with attack success >90% where original reports showed near-zero; filtering and secret-based mechanisms (e.g., Data Sentinel, MELON) were bypassed; human red-teaming reached universal success in their figures. Recommends adaptive attacks as the evaluation standard.
+   URL: https://arxiv.org/abs/2510.09023
+2. [A13] CyberSOCEval (Meta, arXiv 2509.20166): evaluations leave out scenarios that matter for defenders; models far from saturating malware-analysis and threat-intel reasoning tasks.
+   URL: https://arxiv.org/html/2509.20166v2
+3. [A14] SentinelLabs "LLMs in the SOC (Part 1)": most benchmarks test narrow tasks mapping poorly to continuous, interrupted analyst work, ignore operational outcomes; reasoning-model gains transfer less to security than to coding/math. Elastic Security Labs built a 21-prompt synthetic-intrusion suite because real telemetry is noisy, sensitive, hard to reproduce.
+   URLs: https://www.sentinelone.com/labs/llms-in-the-soc-part-1-why-benchmarks-fail-security-operations-teams ; https://www.elastic.co/kr/security-labs/llm-benchmarking-agentic-soc
+4. [A18] LLM CTI studies show LLM-extracted TTPs diverge from analyst annotations (arXiv 2505.11547) - see academic_gaps/01.
+5. A 2026 arXiv paper (2603.06422) on security incident analysis notes the lack of systematic LLM evaluations and real-world datasets (snippet only).
+
+STRUCTURAL LIMITATIONS / FUTURE-WORK SCOPES
+- No public labeled dataset of LLM-orchestrated intrusion telemetry was found; offensive-agent evidence is provider-side (prompts/accounts), not victim-side (host/network/identity telemetry).
+- Defensive-agent benchmarks measure task accuracy on synthetic or narrow data, not security under adaptive adversaries or operational outcomes.
+- Prevalence of AI-driven breaches is unmeasured: Mandiant (industry_telemetry/06) explicitly cautions against over-attribution.
